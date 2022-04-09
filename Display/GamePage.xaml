@@ -1,0 +1,196 @@
+﻿<Page x:Class="Game.Display.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Game.Display"
+      mc:Ignorable="d" 
+      Title="GamePage"
+      Loaded="Page_Loaded">
+
+    <Grid Name="PageGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Column0 Row0: display the game world or an individual scene -->
+        <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Name="InternalFrame" IsEnabled="False" Visibility="Hidden" Panel.ZIndex="1"/>
+        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Name="World" Source="Assets/world.png" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"  />
+        <Grid Name="WorldGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="10" Grid.Row="10" Name="Player" Source="Assets/player.png"  />
+        </Grid>
+
+        <!-- Column0 Rows1-2: display console -->
+        <RichTextBox Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="2" Name="Console" 
+                         Background="Black" Foreground="White" FontSize="12" FontWeight="Bold" 
+                         Focusable="False" IsEnabled="True"
+                         BorderThickness="1,1,1,1" Block.TextAlignment="Center" 
+                         Block.LineHeight="4" 
+                         ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type ScrollBar}">
+                    <Setter Property="Background" Value="Black"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+
+
+        <!-- Column1 Row0: display player items -->
+        <Grid Name="ItemGrid" Grid.Column="1" Grid.Row="0" Background="#FF333333" Margin="20,5"
+              MouseLeftButtonDown="ItemsMouseLeftButtonDown"
+            MouseLeftButtonUp="ItemsMouseLeftButtonUp"
+            MouseMove="ItemsMouseMove">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="0" Grid.Row="1"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="1"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="2" Grid.Row="1"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="3" Grid.Row="1"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="4" Grid.Row="1"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="0" Grid.Row="2"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="2"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="2" Grid.Row="2"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="3" Grid.Row="2"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="4" Grid.Row="2"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="0" Grid.Row="3"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="3"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="2" Grid.Row="3"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="3" Grid.Row="3"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="4" Grid.Row="3"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="0" Grid.Row="4"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="4"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="2" Grid.Row="4"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="3" Grid.Row="4"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="4" Grid.Row="4"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="0" Grid.Row="5"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="5"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="2" Grid.Row="5"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="3" Grid.Row="5"/>
+            <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="4" Grid.Row="5"/>
+            <Border BorderThickness="2 2 1 2" BorderBrush="Green" Grid.Column="0" Grid.Row="0"/>
+            <Border BorderThickness="1 2" BorderBrush="Green" Grid.Column="1" Grid.Row="0"/>
+            <Border BorderThickness="1 2" BorderBrush="Green" Grid.Column="2" Grid.Row="0"/>
+            <Border BorderThickness="1 2" BorderBrush="Green" Grid.Column="3" Grid.Row="0"/>
+            <Border BorderThickness="1 2 2 2" BorderBrush="Green" Grid.Column="4" Grid.Row="0"/>
+        </Grid>
+        <Canvas Name="ItemCanvas" Grid.Column="1" Grid.Row="0" Margin="20,5"></Canvas>
+
+
+        <!-- Column1 Row1: display player statistics -->
+        <Grid Grid.Column="1" Grid.Row="1" Name="Stats">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <RichTextBox Grid.Column="0" Grid.Row="0" Name="Stat1"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+            <RichTextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Name="Stat2"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+            <RichTextBox Grid.Column="3" Grid.Row="0" Name="Stat3"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+            <RichTextBox Grid.Column="0" Grid.Row="1" Name="Stat4"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+            <RichTextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Name="Stat5"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+            <RichTextBox Grid.Column="3" Grid.Row="1" Name="Stat6"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+            <RichTextBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Name="StatLevel"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <RichTextBox Grid.Column="2"  Grid.ColumnSpan="2" Grid.Row="2" Name="StatGold"
+                     Background="Black" Foreground="Yellow" FontSize="16" FontWeight="Bold"
+                     Focusable="False" BorderThickness="0"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+       
+    </Grid>
+</Page>
